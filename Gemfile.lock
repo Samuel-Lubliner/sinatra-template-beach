@@ -49,6 +49,7 @@ GEM
       ruby2_keywords (>= 0.0.4)
     faraday-net_http (3.0.2)
     faraday-retry (1.0.3)
+    ffi (1.15.5)
     grade_runner (0.0.8)
       activesupport (>= 2.3.5)
       faraday-retry (~> 1.0.3)
@@ -56,6 +57,7 @@ GEM
       oj (~> 3.13.12)
       rake (~> 13)
     hashdiff (1.0.1)
+    hashie (3.6.0)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     matrix (0.4.2)
@@ -63,6 +65,7 @@ GEM
     mini_mime (1.1.2)
     minitest (5.18.0)
     multi_json (1.15.0)
+    multipart-post (2.0.0)
     mustermann (3.0.0)
       ruby2_keywords (~> 0.0.1)
     nio4r (2.5.9)
@@ -128,8 +131,14 @@ GEM
       rack-protection (= 3.0.6)
       sinatra (= 3.0.6)
       tilt (~> 2.0)
+    soda-ruby (1.0.1)
+      hashie (~> 3.5)
+      multipart-post (~> 2.0.0)
+      sys-uname (~> 1.0.2)
     sqlite3 (1.6.2-x86_64-darwin)
     sqlite3 (1.6.2-x86_64-linux)
+    sys-uname (1.0.4)
+      ffi (>= 1.0.0)
     table_print (1.5.7)
     tabulo (2.8.2)
       tty-screen (= 0.8.1)
@@ -170,6 +179,7 @@ DEPENDENCIES
   sinatra
   sinatra-activerecord
   sinatra-contrib
+  soda-ruby
   sqlite3 (~> 1.4)
   table_print
   webdrivers

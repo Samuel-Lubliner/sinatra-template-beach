@@ -4,9 +4,25 @@
     <title>Sinatra Template</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <style>
+
+        .navbar a {
+            padding: 14px 16px;
+        }
+
+    </style>
+
+
   </head>
 
   <body>
+
+   <div class="navbar">
+        <a href="/prediction">Beach Water Quality</a>
+        <a href="/about">About</a>
+    </div>
+
     <%= yield %>
   </body>
 </html>

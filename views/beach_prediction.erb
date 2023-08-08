@@ -1,0 +1,7 @@
+    <h1>Beach Predictions</h1>
+    <p>Date: <%= Time.now.strftime('%Y-%m-%d') %></p>
+    <ol>
+        <% @beaches.each do |beach| %>
+            <li><strong><%= beach["beach_name"] %></strong>: <%= beach["predicted_level"] %></li>
+        <% end %>
+    </ol>
