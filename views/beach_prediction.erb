@@ -1,7 +1,34 @@
-    <h1>Beach Predictions</h1>
-    <p>Date: <%= Time.now.strftime('%Y-%m-%d') %></p>
-    <ol>
-        <% @beaches.each do |beach| %>
-            <li><strong><%= beach["beach_name"] %></strong>: <%= beach["predicted_level"] %></li>
-        <% end %>
-    </ol>
+<h1>Chicago Beach Water Quality</h1>
+<p>Do not swim if levels exceed 235 cfu</p>
+<table>
+  <thead>
+    <tr>
+      <th>Beach Name</th>
+      <th>cfu/100mL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @beaches.each do |beach| %>
+      <tr>
+        <td><%= beach["beach_name"] %></td>
+        <td><%= beach["predicted_level"] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<style>
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+  }
+
+  tr:hover {
+        background-color: #f5f5f5;
+    }
+</style>

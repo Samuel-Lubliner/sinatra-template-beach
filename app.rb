@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'http'
 require 'json'
+require 'date'
 
 get '/' do
   erb :about
@@ -10,16 +11,21 @@ get '/about' do
   erb :about
 end
 
-
 get '/prediction' do
+  today = Date.today
+  url = "https://data.cityofchicago.org/resource/xvsz-3xcj.json?date=#{today}"
 
-  current_date = Time.now.strftime('%Y-%m-%d')
+  response = HTTP.get(url)
+  data = JSON.parse(response.body.to_s)
 
-  response = HTTP.get("https://data.cityofchicago.org/resource/xvsz-3xcj.json?date=#{current_date}")
+  if data.empty? # If today's data is not available, get yesterday's data
+    yesterday = today - 1
+    url = "https://data.cityofchicago.org/resource/xvsz-3xcj.json?date=#{yesterday}"
+    response = HTTP.get(url)
+    data = JSON.parse(response.body.to_s)
+  end
 
-  beaches_data = JSON.parse(response.to_s)
-
-  @beaches = beaches_data.sort_by { |beach| beach["predicted_level"].to_f }
+  @beaches = data.sort_by { |beach| beach["predicted_level"].to_f } 
 
   erb :beach_prediction
 end
